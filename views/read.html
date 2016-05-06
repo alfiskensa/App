@@ -1,0 +1,88 @@
+<div class="col-md-12">
+<div class="row">
+	<h2 class="text-center">Aplikasi Kemahasiswaan</h2>
+</div>
+<div class="row">
+<a href="#/create" class="btn btn-primary">Tambah Data</a>
+</div>
+<br/>
+<div class="row">
+<table class="table table-bordered table-striped">
+	<thead>
+        <tr ng-show="success" class="text-center">
+			<td colspan="4">Sukses input data</td>
+		</tr>
+		<tr>
+			<td>NIM</td>
+			<td>Nama</td>
+            <td>Program Studi</td>
+            <td colspan="3" align="center">Aksi</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in api">
+		<td>{{item.nim}}</td>
+		<td>{{item.nama}}</td>
+        <td>{{item.prodi}}</td>
+		<td><a href="#/edit/{{item.id}}" class="btn btn-info btn-block">Edit</a></td>
+		<td><button ng-click="deletar(item.id)" class="btn btn-danger btn-block">Delete</button></td>
+        <td><a data-toggle="modal" data-target="#{{item.id}}" class="btn btn-success btn-block">Details</a></td>
+		</tr>
+		<tr ng-show="notFound" class="text-center">
+			<td colspan="4">Não tem lembretes</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<div ng-repeat="item in api" id="{{item.id}}" role="dialog" class="modal fade">
+		              <div class="modal-dialog">
+		                  <div class="modal-content">
+		                      <div class="modal-header">
+		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                          <h4 class="modal-title">Profil Lengkap</h4>
+		                      </div>
+		                      <div class="modal-body">
+							  <table class="table table-bordered table-striped">
+		                           
+										<td>&nbsp;NIM&nbsp;</td>
+										<td>:&nbsp;</td>
+										<td>&nbsp;{{item.nim}}</td>
+									</tr>
+									<tr>
+									  <td>&nbsp;NAMA&nbsp;</td>
+									  <td>:&nbsp;</td>
+										<td>&nbsp;{{item.nama}}</td>
+									</tr>
+									<tr>
+									  <td>&nbsp;JENIS KELAMIN&nbsp;</td>
+									  <td>:&nbsp;</td>
+										<td>&nbsp;{{item.jk}}</td>
+									</tr>
+									<tr>
+									  <td>&nbsp;AGAMA&nbsp;</td>
+									  <td>:&nbsp;</td>
+										<td>&nbsp;{{item.agama}}</td>
+									</tr>
+									<tr>
+									  <td>&nbsp;ALAMAT&nbsp;</td>
+									  <td>:&nbsp;</td>
+										<td>&nbsp;{{item.alamat}}</td>
+									</tr>
+									<tr>
+									  <td>&nbsp;HOBBY&nbsp;</td>
+									  <td>:&nbsp;</td>
+										<td>&nbsp;{{item.hobby}}</td>
+									</tr>
+									</table>
+		                      </div>
+		                      <div class="modal-footer">
+		                          <button data-dismiss="modal" class="btn btn-default" type="button">Tutup</button>
+		                      </div>
+		                  </div>
+		              </div>
+		          </div>
+</div>
+	
+</div>
+</div>
